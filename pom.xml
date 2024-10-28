@@ -13,8 +13,8 @@
 	<artifactId>productos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>productos</name>
-	<description>Microservicio Productos</description>
+	<name>tienda-productos</name>
+	<description>Microservicio Tienda-Productos</description>
 	<url />
 	<licenses>
 		<license />
