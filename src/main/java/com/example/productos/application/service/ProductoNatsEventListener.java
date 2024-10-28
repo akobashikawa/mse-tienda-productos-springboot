@@ -18,8 +18,8 @@ public class ProductoNatsEventListener {
 	@Autowired
 	private NatsEventPublisher eventPublisher;
 
-	@Autowired
-	private ProductoService productoService;
+//	@Autowired
+//	private ProductoService productoService;
 
 	@PostConstruct
 	public void init() throws Exception {
@@ -38,7 +38,8 @@ public class ProductoNatsEventListener {
 	private void handleProductosRequestReply(Message msg) {
 	    try {
 	        // Obtener la lista de productos
-	        List<Producto> productos = productoService.getItems();
+//	        List<Producto> productos = productoService.getItems();
+	        List<Producto> productos = null;
 	        System.out.println("productos.requestReply: " + productos);
 
 	        // Crear un ObjectMapper para convertir la lista a JSON

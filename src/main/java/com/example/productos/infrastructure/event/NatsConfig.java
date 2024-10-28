@@ -4,13 +4,17 @@ import io.nats.client.Connection;
 import io.nats.client.Nats;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 
 @Configuration
 public class NatsConfig {
 
+    @Value("${nats.url}")
+    private String natsServerUrl;
+
     @Bean
-    Connection natsConnection() throws Exception {
-        return Nats.connect("nats://localhost:4222");
+    public Connection natsConnection() throws Exception {
+        return Nats.connect(natsServerUrl);
     }
 }
 

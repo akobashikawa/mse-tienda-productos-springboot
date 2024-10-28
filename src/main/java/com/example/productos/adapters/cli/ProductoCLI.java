@@ -13,8 +13,8 @@ import picocli.CommandLine.Parameters;
 @Command(name = "producto-cli", description = "CLI para gestionar productos")
 public class ProductoCLI implements Runnable {
 
-    @Autowired
-    private ProductoService productoService;
+//    @Autowired
+//    private ProductoService productoService;
 
     @Option(names = {"-a", "--add"}, description = "Añadir un nuevo producto")
     private boolean addProduct;
@@ -39,8 +39,9 @@ public class ProductoCLI implements Runnable {
         	producto.setCosto(costo);
         	producto.setPrecio(precio);
         	producto.setCantidad(cantidad);
-            Producto nuevoProducto = productoService.createItem(producto);
-            System.out.println("Producto añadido: " + nuevoProducto);
+//            Producto nuevoProducto = productoService.createItem(producto);
+//            System.out.println("Producto añadido: " + nuevoProducto);
+            System.out.println("Producto añadido: " + producto);
         }
         // Más comandos aquí
     }
