@@ -76,18 +76,18 @@ NATS_URL=nats://localhost:4222
 ```
 
 ```sh
-docker build -t productos .
+docker build -t tienda-productos .
 
 docker run --network="host" \
     -e SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/tienda_productos \
     -e SPRING_DATASOURCE_USERNAME=postgres \
     -e SPRING_DATASOURCE_PASSWORD=postgres \
     -e NATS_URL=nats://localhost:4222 \
-    --name productos \
-    productos
+    --name tienda-productos \
+    tienda-productos
 
 # usando .env
-docker run --network="host" --env-file .env --name productos productos
+docker run --network="host" --env-file .env --name tienda-productos tienda-productos
 
 ```
 
@@ -115,8 +115,8 @@ docker run -p 8081:8081 \
     -e SPRING_DATASOURCE_PASSWORD=postgres \
     -e NATS_URL=nats://nats:4222 \
     --network tienda_network \
-    --name productos \
-    productos
+    --name tienda-productos \
+    tienda-productos
 ```
 
 ### Con docker-compose
