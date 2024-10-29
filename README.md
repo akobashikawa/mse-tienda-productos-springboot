@@ -119,3 +119,12 @@ docker run -p 8081:8081 \
     productos
 ```
 
+### Con docker-compose
+
+- `Dockerfile` tiene una configuración para desarrollo standalone
+- `Dockerfile-mse` tiene una configuración para desarrollo como microservicio, para ser invocado desde la carpeta principal de mseTienda
+
+```sh
+docker-compose up --build
+docker-compose logs -f tienda-productos
+```

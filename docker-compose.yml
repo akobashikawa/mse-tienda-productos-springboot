@@ -1,0 +1,52 @@
+services:
+      
+  tienda-productos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+      - "35729:35729"
+      - "5005:5005"
+    volumes:
+      - ./src:/app/src  # Monta el código fuente
+      - ./public:/app/public  # Monta la carpeta public
+      - ~/.m2:/root/.m2  # Cache de dependencias de Maven (opcional)
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db_productos:5432/tienda_productos
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      NATS_URL: nats://nats:4222
+    networks:
+      - tienda_network
+    depends_on:
+      - db_productos
+      - nats
+      
+  nats:
+    image: nats:latest
+    ports:
+      - "4222:4222"
+    networks:
+      - tienda_network
+      
+  db_productos:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tienda_productos
+    ports:
+      - "5432:5432"
+    networks:
+      - tienda_network
+    volumes:
+      - db_productos_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d
+
+networks:
+  tienda_network:
+    driver: bridge
+
+volumes:
+  db_productos_data:
