@@ -6,8 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
-      - "35729:35729"
-      - "5005:5005"
     volumes:
       - ./src:/app/src  # Monta el código fuente
       - ./public:/app/public  # Monta la carpeta public
