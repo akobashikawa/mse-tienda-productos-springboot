@@ -20,6 +20,6 @@ public class DataSourceConfig {
     public void printDataSourceConfig() {
         System.out.println("Datasource URL: " + datasourceUrl);
         System.out.println("Datasource Username: " + datasourceUsername);
-        System.out.println("Datasource Password: " + datasourcePassword);
+//        System.out.println("Datasource Password: " + datasourcePassword);
     }
 }

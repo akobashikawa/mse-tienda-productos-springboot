@@ -60,6 +60,9 @@ SPRING_DATASOURCE_PASSWORD=postgres \
 NATS_URL=nats://localhost:4222 \
 mvn spring-boot:run
 
+# el proyecto usa también dotenv
+mvn spring-boot:run
+
 # test
 nats pub productos.test "Hola"
 ```
