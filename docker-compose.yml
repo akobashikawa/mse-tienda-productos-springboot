@@ -19,14 +19,14 @@ services:
       - tienda_network
     depends_on:
       - db_productos
-      - nats
+      # - nats
       
-  nats:
-    image: nats:latest
-    ports:
-      - "4222:4222"
-    networks:
-      - tienda_network
+  # nats:
+  #   image: nats:latest
+  #   ports:
+  #     - "4222:4222"
+  #   networks:
+  #     - tienda_network
       
   db_productos:
     image: postgres:latest
@@ -44,7 +44,8 @@ services:
 
 networks:
   tienda_network:
-    driver: bridge
+    external: true  # Marcar red como externa
+    # driver: bridge
 
 volumes:
   db_productos_data:

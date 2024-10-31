@@ -124,6 +124,7 @@ docker run -p 8081:8081 \
 
 ### Con docker-compose
 
+- Requiere iniciar antes nats
 - `Dockerfile` tiene una configuración para desarrollo standalone
 - `Dockerfile-mse` tiene una configuración para desarrollo como microservicio, para ser invocado desde la carpeta principal de mseTienda
 
