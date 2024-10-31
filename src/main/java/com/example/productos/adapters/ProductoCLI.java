@@ -1,7 +1,7 @@
-package com.example.productos.adapters.cli;
+package com.example.productos.adapters;
 
-import com.example.productos.application.service.ProductoService;
-import com.example.productos.domain.model.Producto;
+import com.example.productos.application.ProductoService;
+import com.example.productos.domain.Producto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

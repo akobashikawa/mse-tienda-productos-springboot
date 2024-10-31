@@ -1,4 +1,4 @@
-package com.example.productos.application.service;
+package com.example.productos.application;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.example.productos.infrastructure.event.NatsEventPublisher;
-import com.example.productos.domain.model.Producto;
-import com.example.productos.domain.repository.ProductoRepository;
+import com.example.productos.domain.Producto;
+import com.example.productos.domain.ProductoRepository;
+import com.example.productos.infrastructure.NatsEventPublisher;
 
 @Service
 public class ProductoService {

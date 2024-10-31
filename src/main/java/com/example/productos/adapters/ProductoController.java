@@ -1,12 +1,12 @@
-package com.example.productos.adapters.rest;
+package com.example.productos.adapters;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.productos.application.service.ProductoService;
-import com.example.productos.domain.model.Producto;
+import com.example.productos.application.ProductoService;
+import com.example.productos.domain.Producto;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,8 +1,9 @@
-package com.example.productos.application.service;
+package com.example.productos.application;
 
 import io.nats.client.Message;
-import com.example.productos.domain.model.Producto;
-import com.example.productos.infrastructure.event.NatsEventPublisher;
+
+import com.example.productos.domain.Producto;
+import com.example.productos.infrastructure.NatsEventPublisher;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -37,9 +38,10 @@ public class ProductoNatsEventListener {
 	
 	private void handleProductosRequestReply(Message msg) {
 	    try {
+	    	System.out.println("productos.test: OK");
+	    	
 	        // Obtener la lista de productos
 	        List<Producto> productos = productoService.getItems();
-//	        List<Producto> productos = null;
 	        System.out.println("productos.requestReply: " + productos);
 
 	        // Crear un ObjectMapper para convertir la lista a JSON

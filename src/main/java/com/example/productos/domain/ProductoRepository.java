@@ -1,9 +1,7 @@
-package com.example.productos.domain.repository;
+package com.example.productos.domain;
 
 import java.util.List;
 import java.util.Optional;
-
-import com.example.productos.domain.model.Producto;
 
 public interface ProductoRepository {
 	List<Producto> findAll();

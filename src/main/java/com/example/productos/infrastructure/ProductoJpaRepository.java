@@ -1,9 +1,9 @@
-package com.example.productos.infrastructure.repository;
+package com.example.productos.infrastructure;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.productos.domain.model.Producto;
-import com.example.productos.domain.repository.ProductoRepository;
+import com.example.productos.domain.Producto;
+import com.example.productos.domain.ProductoRepository;
 
 import java.util.List;
 import java.util.Optional;

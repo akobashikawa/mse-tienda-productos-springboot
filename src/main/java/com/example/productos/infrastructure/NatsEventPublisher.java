@@ -1,4 +1,4 @@
-package com.example.productos.infrastructure.event;
+package com.example.productos.infrastructure;
 
 import io.nats.client.Connection;
 import io.nats.client.Dispatcher;
