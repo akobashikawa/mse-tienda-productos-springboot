@@ -8,6 +8,7 @@ WORKDIR /app
 COPY pom.xml ./
 COPY src ./src
 COPY public ./public
+COPY .env ./.env
 
 # Descargar dependencias sin ejecutar el código
 RUN mvn dependency:go-offline
