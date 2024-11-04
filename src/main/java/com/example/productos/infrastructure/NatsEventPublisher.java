@@ -55,7 +55,7 @@ public class NatsEventPublisher {
 		}
 	}
 	
-	public Map<String, Object> getPayload(Message msg) throws JsonMappingException, JsonProcessingException {
+	public Map<String, Object> getPayload(Message msg) {
 		String data = new String(msg.getData());
 		try {
 			return objectMapper.readValue(data, Map.class);

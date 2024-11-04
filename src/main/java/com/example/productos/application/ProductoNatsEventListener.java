@@ -8,6 +8,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -35,30 +37,47 @@ public class ProductoNatsEventListener {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void handleProductosRequestReply(Message msg) {
-	    try {
-	    	System.out.println("productos.test: OK");
-	    	
-	        // Obtener la lista de productos
-	        List<Producto> productos = productoService.getItems();
-	        System.out.println("productos.requestReply: " + productos);
+		try {
+			Map<String, Object> request = eventPublisher.getPayload(msg);
+			String method = (String) request.get("method");
+			Map<String, Object> params = (Map<String, Object>) request.get("params");
+			Map<String, Object> query = (Map<String, Object>) request.get("query");
+			Map<String, Object> body = (Map<String, Object>) request.get("body");
+			System.out.println(method);
+			System.out.println(params);
+			System.out.println(query);
+			System.out.println(body);
+			
+			String response;
 
-	        // Crear un ObjectMapper para convertir la lista a JSON
-	        ObjectMapper objectMapper = new ObjectMapper();
-
-	        // Convertir la lista de productos a JSON
-	        String json = objectMapper.writeValueAsString(productos);
-
-	        // Publicar la respuesta utilizando el publisher de eventos
-	        eventPublisher.publishResponse(msg, json);
-	    } catch (JsonProcessingException e) {
-	        // Manejar la excepción de procesamiento de JSON
-	        e.printStackTrace();
-	    } catch (Exception e) {
-	        // Manejar otras excepciones
-	        e.printStackTrace();
-	    }
+			switch (method.toUpperCase()) {
+			case "GET":
+				response = productoService.handleGet(params, query);
+				break;
+			case "POST":
+				response = productoService.handlePost(body);
+				break;
+			case "PUT":
+				response = productoService.handlePut(params, body);
+				break;
+			case "PATCH":
+				response = productoService.handlePatch(params, body);
+				break;
+			case "DELETE":
+				response = productoService.handleDelete(params);
+				break;
+			default:
+				response = "Unsopported method: " + method;
+			}
+			
+			// Publicar la respuesta o responder a la solicitud
+	        msg.getConnection().publish(msg.getReplyTo(), response.getBytes());
+		} catch (Exception e) {
+			// Manejar otras excepciones
+			e.printStackTrace();
+		}
 	}
-	
+
 }
